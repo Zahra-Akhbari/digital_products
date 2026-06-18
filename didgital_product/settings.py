@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 import os
 from pathlib import Path
 
+from .local_settings import  *
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,13 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-q$=0x@y92m*doo&1rn6b6j(uvtxfz3a3b!e0%6c49msr9xhmaz"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# الان در حال توسعه هست
-# هروقت خواستیم وارد محیط پروداکشن شویم
-# هم دیباگ و هم این گزینه فالس میشه
-IS_DEVEL= True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,6 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    'rest_framework',
+
+    'users',
     'products',
 ]
 
@@ -110,9 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "fa"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Tehran"
+USE_I18N = True
+USE_L10N = True
 
 USE_I18N = True
 
@@ -127,3 +128,9 @@ STATIC_URL = "static/"
 #media files
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+#default primary key field type
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+#Authorization
+AUTH_USER_MODEL = "users.User"
